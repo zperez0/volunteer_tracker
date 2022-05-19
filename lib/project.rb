@@ -27,5 +27,15 @@ class Project
     @id = result.first().fetch("id").to_i
   end
 
+  def self.find(id)
+  end
 
+  def volunteers
+  end
+
+  def update
+  end
+
+  def delete
+  end
 end
