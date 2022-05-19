@@ -6,4 +6,11 @@ class Project
     @title = attributes.fetch(:title)
     @id = attributes.fetch(:id)
   end
+
+  def ==()
+  end
+
+  def self.all
+  end
+
 end
