@@ -14,5 +14,4 @@ describe Project do
       expect(project.id).to eq nil
     end
   end
-
 end
