@@ -27,8 +27,8 @@ This application was created to demonstrates my understanding of using CRUD func
 
 ## Setup/Installation Requirements
 * _You will need to install the following before proceeding (click on the link to follow the installation process):_
- - _[Ruby](https://www.ruby-lang.org/en/documentation/installation/)_
- - _[PostgreSQL](https://www.postgresql.org/docs/current/tutorial-install.html)_
+_[Ruby](https://www.ruby-lang.org/en/documentation/installation/),_
+_[PostgreSQL](https://www.postgresql.org/docs/current/tutorial-install.html)_
 
 
 * _Go to [GitHub](https://github.com/zperez0/volunteer_tracker)_
