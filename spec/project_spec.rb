@@ -77,7 +77,7 @@ describe Project do
     it 'allows a user to update a project' do
       project = Project.new({:title => 'Teaching kids to code', :id => nil})
       project.save
-      project.update('Teaching ruby to kids')
+      project.update({:title => 'Teaching ruby to kids', :id => nil})
       expect(project.title).to eq 'Teaching ruby to kids'
     end
   end
