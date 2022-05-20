@@ -60,8 +60,8 @@ class Volunteer
     DB.exec("DELETE FROM volunteers WHERE id = #{@id};")
   end
 
-  def update(name)
-    @name = name
-    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
+  def update(attr)
+    @name = attr.fetch(:name)
+    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id}")
   end
 end
