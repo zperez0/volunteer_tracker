@@ -14,7 +14,7 @@ class Project
   def self.all
     returned_projects = DB.exec("SELECT * FROM projects;")
     projects =[]
-    returned_projects.each() do |project|
+    returned_projects.each do |project|
       title = project.fetch("title")
       id = project.fetch("id").to_i
       projects.push(Project.new({:title => title, :id => id}))
@@ -24,7 +24,7 @@ class Project
 
   def save
     result = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id;")
-    @id = result.first().fetch("id").to_i
+    @id = result.first.fetch("id").to_i
   end
 
   def self.find(id)
@@ -39,11 +39,12 @@ class Project
   end
 
   def volunteers
+    Volunteer.find_by_project(self.id)
   end
 
-  def update(title)
-    @title = title
-    DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
+  def update(attr)
+    @title = attr.fetch(:title)
+    DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id}")
   end
 
   def delete
