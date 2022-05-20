@@ -68,7 +68,7 @@ describe Volunteer do
     it 'allows a user to update a volunteers name' do
       volunteer = Volunteer.new({:name => 'Jane', :project_id => 1, :id => nil})
       volunteer.save
-      volunteer.update('cheese')
+      volunteer.update({:name => 'cheese', :project_id => 1, :id => nil})
       expect(volunteer.name).to eq 'cheese'
     end
   end
