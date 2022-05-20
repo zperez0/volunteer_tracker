@@ -33,6 +33,11 @@ get '/projects/:id' do
   erb :project
 end
 
+get '/projects/:id/edit' do
+  @project = Project.find(params[:id].to_i)
+  erb :edit_project
+end
+
 patch '/projects/:id' do
   @project = Project.find(params[:id].to_i)
   @project.update(params[:title])
@@ -42,12 +47,7 @@ end
 delete '/projects/:id' do
   @project = Project.find(params[:id].to_i)
   @project.delete
-  redirect to '/projects'
-end
-
-get '/projects/:id/edit' do
-  @project = Project.find(params[:id].to_i)
-  erb :edit_project
+  redirect to'/projects'
 end
 
 post '/projects/:id/volunteers' do
