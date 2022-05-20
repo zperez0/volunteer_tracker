@@ -17,10 +17,6 @@ get '/projects' do
   erb :projects
 end
 
-get '/projects/new' do
-  erb :new_project
-end
-
 post '/projects' do
   title = params[:title]
   project = Project.new({:title => title, :id => nil})
