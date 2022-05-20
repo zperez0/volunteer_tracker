@@ -40,4 +40,28 @@ class Volunteer
       nil
     end
   end
+
+  def project
+    Project.find(@project_id)
+  end
+
+  def self.find_by_project(prg_id)
+    volunteers = []
+    returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{prg_id};")
+    returned_volunteers.each() do |volunteer|
+      name = volunteer.fetch("name")
+      id = volunteer.fetch("id").to_i
+      volunteers.push(Volunteer.new({:name => name, :project_id => prg_id, :id => id}))
+    end
+    volunteers
+  end
+
+  def delete
+    DB.exec("DELETE FROM volunteers WHERE id = #{@id};")
+  end
+
+  def update(name)
+    @name = name
+    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
+  end
 end
