@@ -9,7 +9,11 @@ class Volunteer
   end
 
   def ==(volunteer_to_compare)
-    self.name == volunteer_to_compare.name
+    if volunteer_to_compare != nil
+      (self.name == volunteer_to_compare.name) && (self.project_id.to_i == volunteer_to_compare.project_id.to_i)
+    else
+      false
+    end
   end
 
   def self.all
