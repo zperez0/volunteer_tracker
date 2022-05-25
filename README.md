@@ -42,28 +42,7 @@ bundle install
 #### Database setup:
 * _create database (type in the terminal):_
 ```
-createdb volunteer_tracker
-```
-* _Open postgres (type in the terminal):_
-```
-postgres
-```
-* _Open a new terminal tab to start psql (type in the terminal):_
-```
-psql
-```
-* _Connect to database (type in the terminal):_
-```
-\c volunteer_tracker 
-```
-* _Create tables in psql (type in the terminal):_
-```
-CREATE TABLE projects (id serial PRIMARY KEY, title varchar)
-CREATE TABLE volunteers (id serial PRIMARY KEY, name varchar, project_id int)
-```
-* _Open a new terminal tab to create a test database (type in the terminal):_
-```
-createdb -T volunteer_tracker volunteer_tracker_test
+rake build
 ```
 
 #### Server:
