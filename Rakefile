@@ -1,6 +1,6 @@
-# desc 'Create a database and test database from a database dump'
-# task :build, [:db_name] do |t, args|
-#   system("createdb #{args.db_name}")
-#   system("psql #{args.db_name} < database_backup.sql")
-#   system("createdb -T #{args.db_name} #{args.db_name + '_test'}")
-# end
+desc 'Create a database and test database from a database dump'
+task :build do
+  system("createdb volunteer_tracker")
+  system("psql volunteer_tracker < volunteer_tracker_backup.sql")
+  system("createdb -T volunteer_tracker volunteer_tracker_test")
+end
