@@ -18,10 +18,15 @@ get '/projects' do
 end
 
 post '/projects' do
-  title = params[:title]
-  project = Project.new({:title => title, :id => nil})
-  project.save
-  redirect to '/projects'
+  user_input = params[:title]
+  if user_input.length > 0
+    title = params[:title]
+    project = Project.new({:title => title, :id => nil})
+    project.save
+    redirect to '/projects'
+  else
+    erb :error
+  end
 end
 
 get '/projects/:id' do
@@ -36,7 +41,7 @@ end
 
 patch '/projects/:id' do
   @project = Project.find(params[:id].to_i)
-  @project.update(params[:title])
+  @project.update({:title => params[:title], :id => nil})
   redirect to '/projects'
 end
 
@@ -49,8 +54,12 @@ end
 post '/projects/:id/volunteers' do
   @project = Project.find(params[:id].to_i)
   volunteer = Volunteer.new({:name => params[:volunteer_name], :project_id => @project.id, :id => nil})
+  if volunteer.name.length > 0
   volunteer.save
   erb :project
+  else
+    erb :error
+  end
 end
 
 get '/projects/:id/volunteers/:volunteer_id' do
