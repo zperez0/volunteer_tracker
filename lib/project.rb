@@ -46,12 +46,25 @@ class Project
     Volunteer.find_by_project(self.id)
   end
 
-  def update(title)
-    @title = title
-    DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
+  def update(attributes)
+    if attributes.has_key?(:title) && attributes.fetch(:title) != nil
+      @title = attributes.fetch(:title)
+      DB.exec("UPDATE projects SET title = '#{@title}' WHERE id = #{@id};")
+    end
   end
 
   def delete
     DB.exec("DELETE FROM projects WHERE id = #{@id};")
   end
 end
+
+# def update(attributes)
+#   if (attributes.has_key?(:name)) && (attributes.fetch(:name) != nil)
+#     @name = attributes.fetch(:name)
+#     DB.exec("UPDATE artists SET name = '#{@name}' WHERE id = #{@id};")
+#   elsif (attributes.has_key?(:album_name)) && (attributes.fetch(:album_name) != nil)
+#     album_name = attributes.fetch(:album_name)
+#     album = DB.exec("SELECT * FROM albums WHERE lower(name)='#{album_name.downcase}';").first
+#     if album != nil
+#       DB.exec("INSERT INTO albums_artists (album_id, artist_id) VALUES (#{album['id'].to_i}, #{@id});")
+#     end
